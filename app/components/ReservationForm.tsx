@@ -27,7 +27,12 @@ const validationSchema = Yup.object().shape({
 });
 
 const ReservationForm = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<ReservationFormValues>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ReservationFormValues>({
     resolver: yupResolver(validationSchema),
   });
 
@@ -49,7 +54,9 @@ const ReservationForm = () => {
         setMessage("Réservation effectuée avec succès !");
         reset();
       } else {
-        setMessage(result.error || "Une erreur est survenue. Veuillez réessayer.");
+        setMessage(
+          result.error || "Une erreur est survenue. Veuillez réessayer."
+        );
       }
     } catch (error) {
       console.error(error);
@@ -60,80 +67,140 @@ const ReservationForm = () => {
   return (
     <form className="w-full p-6" onSubmit={handleSubmit(onSubmit)}>
       <h2 className="text-4xl mb-4 uppercase font-black">Réservation</h2>
-      {message && <p className="text-green-500 bg-green-100 p-3 rounded mb-4">{message}</p>}
+      {message && (
+        <p className="text-green-500 bg-green-100 p-3 rounded mb-4">
+          {message}
+        </p>
+      )}
 
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Prénom:</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Prénom:
+        </label>
         <input
           type="text"
-          {...register('firstName')}
+          {...register("firstName")}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
         />
-        {errors.firstName && <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">{errors.firstName.message}</p>}
+        {errors.firstName && (
+          <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">
+            {errors.firstName.message}
+          </p>
+        )}
       </div>
 
-  
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Nom:</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Nom:
+        </label>
         <input
           type="text"
-          {...register('lastName')}
+          {...register("lastName")}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
         />
-        {errors.lastName && <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">{errors.lastName.message}</p>}
+        {errors.lastName && (
+          <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">
+            {errors.lastName.message}
+          </p>
+        )}
       </div>
 
-     
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Email:
+        </label>
         <input
           type="email"
-          {...register('email')}
+          {...register("email")}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
         />
-        {errors.email && <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">{errors.email.message}</p>}
+        {errors.email && (
+          <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">
+            {errors.email.message}
+          </p>
+        )}
       </div>
 
-   
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Téléphone:</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Téléphone:
+        </label>
         <input
           type="tel"
-          {...register('phone')}
+          {...register("phone")}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
         />
-        {errors.phone && <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">{errors.phone.message}</p>}
+        {errors.phone && (
+          <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">
+            {errors.phone.message}
+          </p>
+        )}
       </div>
 
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Nombre de personnes:</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Nombre de personnes:
+        </label>
         <input
           type="number"
-          {...register('numPeople')}
+          {...register("numPeople")}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
         />
-        {errors.numPeople && <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">{errors.numPeople.message}</p>}
+        {errors.numPeople && (
+          <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">
+            {errors.numPeople.message}
+          </p>
+        )}
       </div>
 
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Date de réservation:</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Date de réservation:
+        </label>
         <input
           type="date"
-          {...register('reservationDate')}
+          {...register("reservationDate")}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"
         />
-        {errors.reservationDate && <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">{errors.reservationDate.message}</p>}
+        {errors.reservationDate && (
+          <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">
+            {errors.reservationDate.message}
+          </p>
+        )}
       </div>
 
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Heure d'arrivée:</label>
-        <select {...register('arrivalTime')} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        <label className="block text-gray-700 text-sm font-bold mb-2">
+          Heure d'arrivée:
+        </label>
+        <select
+          {...register("arrivalTime")}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        >
           <option value="">Sélectionnez une heure</option>
-          {['12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '19:00', '19:30', '20:00', '20:30', '21:00'].map((time) => (
-            <option key={time} value={time}>{time}</option>
+          {[
+            "12:00",
+            "12:30",
+            "13:00",
+            "13:30",
+            "14:00",
+            "14:30",
+            "19:00",
+            "19:30",
+            "20:00",
+            "20:30",
+            "21:00",
+          ].map((time) => (
+            <option key={time} value={time}>
+              {time}
+            </option>
           ))}
         </select>
-        {errors.arrivalTime && <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">{errors.arrivalTime.message}</p>}
+        {errors.arrivalTime && (
+          <p className="text-red-500 text-xs italic bg-red-100 p-3 my-2 rounded-md">
+            {errors.arrivalTime.message}
+          </p>
+        )}
       </div>
 
       <button
